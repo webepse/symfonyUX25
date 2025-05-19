@@ -39,3 +39,13 @@ Modifier le fichier assets/controllers.json
 et faire un :
 
 ```php bin/console importmap:require tom-select/dist/css/tom-select.bootstrap5.css```
+
+Création d'un autocompletefield
+
+```php bin/console make:autocomplete-field```
+
+## toggle Password
+
+```composer require symfony/ux-toggle-password```
+
+https://ux.symfony.com/toggle-password
