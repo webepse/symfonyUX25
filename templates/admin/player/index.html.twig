@@ -40,8 +40,8 @@
                         {{player.team.name}}
                     </td>
                     <td>
-                        <a href="{{path("admin_players_edit",{"id":player.id})}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="{{path("admin_players_delete",{"id":player.id})}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
+                        <a href="{{path("admin_players_delete",{"id":player.id})}}" class="btn btn-danger" data-turbo-stream><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
             {% endfor %}

@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\UX\Turbo\TurboBundle;
 
 final class AdminPlayerController extends AbstractController
 {
@@ -112,6 +113,11 @@ final class AdminPlayerController extends AbstractController
         $message = "Le joueur id:".$playerId." a bien été supprimé";
         $manager->remove($player);
         $manager->flush();
+        if(TurboBundle::STREAM_FORMAT === $request->getPreferredFormat())
+        {
+            $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+            return $this->render("admin/player/delete.html.twig",["playerId" => $playerId, "message" => $message]);
+        }
         $this->addFlash(
             "success",
             $message
