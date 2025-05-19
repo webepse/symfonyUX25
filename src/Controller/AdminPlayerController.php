@@ -67,13 +67,33 @@ final class AdminPlayerController extends AbstractController
 
     /**
      * Permet de modifier un utilisateur
+     * @param Player $player
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param int $id
+     * @param int $page
      * @return Response
      */
-    #[Route("/admin/players/{id}/edit", name: "admin_players_edit")]
-    public function edit(): Response
+    #[Route("/admin/players/{id}/edit/{page<\d+>?1}", name: "admin_players_edit")]
+    public function edit(Player $player,Request $request, EntityManagerInterface $manager,int $id, int $page): Response
     {
-        return $this->render("admin/player/edit.html.twig",[
+        $form = $this->createForm(PlayerTypeForm::class, $player);
+        $form->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($player);
+            $manager->flush();
+            $this->addFlash(
+                'success',
+                "Le joueur <strong>".$player->getLastName()." ".$player->getFirstName()."</strong> a bien été modifié"
+            );
+            return $this->redirectToRoute("admin_players_index", ['page' => $page]);
+        }
+
+        return $this->render("admin/player/edit.html.twig",[
+            'player'=> $player,
+            'myForm' => $form->createView(),
+            'page' => $request->query->get('mypage')
         ]);
     }
 

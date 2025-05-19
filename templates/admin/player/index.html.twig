@@ -25,7 +25,11 @@
             {% for player in pagination.data %}
                 <tr class="text-center" id="row_player_{{player.id}}">
                     <td>{{player.id}}</td>
-                    <td>{{player.lastName}} {{player.firstName}}</td>
+                    <td>
+                        <turbo-frame id="player_{{ player.id }}">
+                            <a href="{{ path('admin_players_edit',{"id": player.id, "mypage": pagination.getPage()}) }}">{{player.lastName}} {{player.firstName}}</a>
+                        </turbo-frame>
+                    </td>
                     <td>
                         {{player.number}}
                     </td>

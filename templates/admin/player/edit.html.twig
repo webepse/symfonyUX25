@@ -1,0 +1,16 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <div class="container full">
+        <h1>Modifier {{ player.firstName }} {{ player.lastName }}</h1>
+        <turbo-frame id="player_{{ player.id }}">
+            {{ form_start(myForm, {action: path("admin_players_edit", {"id":player.id,"page":page}), 'method': "POST"}) }}
+
+            {{ form_widget(myForm) }}
+            <button type="submit" class="btn btn-warning">Modifier</button>
+
+            {{ form_end(myForm) }}
+        </turbo-frame>
+    </div>
+
+{% endblock %}

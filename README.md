@@ -24,3 +24,10 @@
 
 ## installation sécurité
 ```composer require symfony/rate-limiter```
+
+
+# Symfony UX
+doc: https://ux.symfony.com/
+
+## turbo
+```composer require symfony/ux-turbo```
