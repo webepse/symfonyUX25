@@ -1,3 +1,7 @@
 body {
-    background-color: skyblue;
+    background-color: white;
+}
+
+.full{
+    min-height: 80vh;
 }
