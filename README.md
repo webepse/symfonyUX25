@@ -31,3 +31,11 @@ doc: https://ux.symfony.com/
 
 ## turbo
 ```composer require symfony/ux-turbo```
+
+## autocomplete
+```composer require symfony/ux-autocomplete```
+
+Modifier le fichier assets/controllers.json
+et faire un :
+
+```php bin/console importmap:require tom-select/dist/css/tom-select.bootstrap5.css```

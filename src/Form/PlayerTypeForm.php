@@ -49,6 +49,7 @@ class PlayerTypeForm extends AbstractType
             ->add('team', EntityType::class, [
                 'class' => Team::class,
                 'choice_label' => 'name',
+                'autocomplete' => true
             ])
         ;
     }
